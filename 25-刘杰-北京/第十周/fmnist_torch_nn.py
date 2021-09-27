@@ -74,7 +74,7 @@ def accuracy(x, y, model):
 
 def main():
     epoch_num = 5
-    image_path = '/Users/liujie/工作相关/data/FMNIST'
+    image_path = '/Users/liujie/work/data/FMNIST'
     trn_dl = get_data(image_path)
     model, loss_fn, opt = get_model()
 

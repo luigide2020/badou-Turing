@@ -38,8 +38,8 @@ def get_model():
 
 
 def main():
-    # image_path = "/Users/liujie/工作相关/data/DogCat/train_sample/*"
-    image_path = "/Users/liujie/工作相关/data/DogCat/train/*"
+    # image_path = "/Users/liujie/work/data/DogCat/train_sample/*"
+    image_path = "/Users/liujie/work/data/DogCat/train/*"
     trn_dl = get_data(image_path)
     models, loss_fn = get_model()
     lrn_rate = 0.1

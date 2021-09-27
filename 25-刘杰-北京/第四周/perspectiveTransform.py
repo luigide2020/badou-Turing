@@ -81,14 +81,16 @@ def main():
     image = cv2.imread(args["path"])
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    src = np.float32([[207, 151], [517, 285], [17, 601], [343, 731]])
-    dst = np.float32([[0, 0], [337, 0], [0, 488], [337, 488]])
+    # src = np.float32([[207, 151], [517, 285], [17, 601], [343, 731]])
+    # dst = np.float32([[0, 0], [337, 0], [0, 488], [337, 488]])
+    src = np.float32([[0, 185], [872, 244], [0, 1560], [859, 1545]])
+    dst = np.float32([[0, 0], [887, 0], [0, 1920], [887, 1920]])
     warpMatrix = perspectiveMatrix(src, dst)
 
-    target_manual = perspectiveTransform(gray,warpMatrix, (337, 488))
+    target_manual = perspectiveTransform(gray,warpMatrix, (887, 1920))
 
     m= cv2.getPerspectiveTransform(src, dst)
-    target_cv = cv2.warpPerspective(gray, m, (337, 488))
+    target_cv = cv2.warpPerspective(gray, m, (887, 1920))
 
     plt.subplot(221)
     plt.title("origin")
@@ -103,6 +105,10 @@ def main():
     plt.imshow(target_cv, cmap="gray")
 
     plt.show()
+
+    target_manual = cv2.resize(target_manual,(887, 1920),interpolation=cv2.INTER_LINEAR)
+    cv2.imwrite("/Users/liujie/Desktop/result.png",target_manual)
+    cv2.imwrite("/Users/liujie/Desktop/result2.jpg",target_cv)
 
 
 if __name__ == '__main__':
